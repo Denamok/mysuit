@@ -485,7 +485,7 @@
             <ul class="list-inline">
                 <li><a href="index.php">Home</a>
                 </li>
-                <li><a href="#">Git</a>
+                <li><a href="https://github.com/Denamok/mysuit">Git</a>
                 </li>
             </ul>
             <p class="text-muted credit">&copy; 2016 <strong>Topik</strong> &middot; 
