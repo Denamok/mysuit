@@ -21,7 +21,7 @@ CREATE TABLE IF NOT EXISTS `plus2net_gallery` (
   PRIMARY KEY (`gal_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
 
--- INSERT INTO plus2net_gallery VALUES (1, "default","root");
+INSERT INTO plus2net_gallery VALUES (1, "default","root");
 
 -- --------------------------------------------------------
 
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS `plus2net_image` (
   `file_name` varchar(100) NOT NULL,
   `userid` varchar(100) NOT NULL,
   `title` varchar(250) DEFAULT NULL,
+  `date` date DEFAULT NULL,
   PRIMARY KEY (`img_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=9 ;
 
