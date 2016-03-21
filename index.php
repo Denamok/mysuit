@@ -382,8 +382,8 @@
 										$result = get_tags();
 										foreach ($result as $m) {
 									?>
-									      <input name="tag[]" class="checkbox" id="<?php echo $m['tag'] ?>" type="checkbox" value="<?php echo $m['tag'] ?>" />
-                                                                              <label for="<?php echo $m['tag'] ?>"><?php echo $m['tag'] ?></label>
+									      <input name="tag[]" class="checkbox" id="<?php echo str_replace(' ', '_', $m['tag']) ?>" type="checkbox" value="'<?php echo str_replace(' ', '_', $m['tag']) ?>'" />
+                                                                              <label for="<?php echo str_replace(' ', '_', $m['tag']) ?>"><?php echo $m['tag']; ?></label>
 									<?php
 										}
 									?>
@@ -558,7 +558,7 @@
             });
 
             $("input[type=checkbox], input[type=radio]").picker();
- 
+
             $(".fancybox").fancybox({
 
                 beforeShow: function(){
