@@ -43,7 +43,6 @@
 			$ids_list .= $car['img_id'] . ",";	
 		}
 		$ids_list = substr($ids_list, 0, -1);
-
 		#return if we got no results from search!
 		if($ids_list == "") { 
 			return $stmt;
@@ -382,7 +381,7 @@
 										$result = get_tags();
 										foreach ($result as $m) {
 									?>
-									      <input name="tag[]" class="checkbox" id="<?php echo str_replace(' ', '_', $m['tag']) ?>" type="checkbox" value="'<?php echo str_replace(' ', '_', $m['tag']) ?>'" />
+									      <input name="tag[]" class="checkbox" id="<?php echo str_replace(' ', '_', $m['tag']) ?>" type="checkbox" value="<?php echo $m['tag'] ?>" />
                                                                               <label for="<?php echo str_replace(' ', '_', $m['tag']) ?>"><?php echo $m['tag']; ?></label>
 									<?php
 										}
