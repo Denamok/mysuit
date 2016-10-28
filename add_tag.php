@@ -1,25 +1,21 @@
 <?Php
 require "config.php"; // Database Connection
 //////////////////////////////////////////////////////Gallery //////////////////
-
 header('Content-type: application/json');
-
-$content = json_decode(file_get_contents('php://input'));
-
-if(!isset($content->img_id)){
+if(!isset($_POST["img_id"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout du tag : pas de img_id";
  echo json_encode($response_array);
  exit;
 }
-if(!isset($content->tag)){
+if(!isset($_POST["tag"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout du tag : pas de tag";
  echo json_encode($response_array);
  exit;
 }
-$img_id=$content->img_id;
-$tag=$content->tag;
+$img_id=$_POST["img_id"];
+$tag=$_POST["tag"];
 
 $sql=$dbo->prepare("insert into tags values('$img_id','$tag')");
 if($sql->execute()){

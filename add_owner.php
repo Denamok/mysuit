@@ -2,22 +2,20 @@
 require "config.php"; // Database Connection
 //////////////////////////////////////////////////////Gallery //////////////////
 header('Content-type: application/json');
-$content = json_decode(file_get_contents('php://input'));
-
-if(!isset($content->img_id)){
+if(!isset($_POST["img_id"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout du propriétaire : pas de img_id";
  echo json_encode($response_array);
  exit;
 }
-if(!isset($content->owner)){
+if(!isset($_POST["owner"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout du propriétaire : pas de propriétaire";
  echo json_encode($response_array);
  exit;
 }
-$img_id=$content->img_id;
-$owner=$content->owner;
+$img_id=$_POST["img_id"];
+$owner=$_POST["owner"];
 
 $sql=$dbo->prepare("insert into owners values('$img_id','$owner')");
 if($sql->execute()){

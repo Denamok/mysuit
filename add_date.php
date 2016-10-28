@@ -2,22 +2,20 @@
 require "config.php"; // Database Connection
 //////////////////////////////////////////////////////Gallery //////////////////
 header('Content-type: application/json');
-$content = json_decode(file_get_contents('php://input'));
-
-if(!isset($content->img_id)){
- $response_array["status"] = "error";
+if(!isset($_POST["img_id"])){
+ $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout de la date : pas de img_id";
  echo json_encode($response_array);
  exit;
 }
-if(!isset($content->date)){
- $response_array["status"] = "error";
+if(!isset($_POST["date"])){
+ $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout de la date : pas de nom";
  echo json_encode($response_array);
  exit;
 }
-$img_id=$content->img_id;
-$date=$content->date;
+$img_id=$_POST["img_id"];
+$date=$_POST["date"];
 
 $sql=$dbo->prepare("update plus2net_image set date='$date' where img_id=$img_id");
 if($sql->execute()){

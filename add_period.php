@@ -2,22 +2,20 @@
 require "config.php"; // Database Connection
 //////////////////////////////////////////////////////Gallery //////////////////
 header('Content-type: application/json');
-$content = json_decode(file_get_contents('php://input'));
-
-if(!isset($content->img_id)){
+if(!isset($_POST["img_id"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout de l'époque : pas de img_id";
  echo json_encode($response_array);
  exit;
 }
-if(!isset($content->period)){
+if(!isset($_POST["period"])){
  $response_array["status"] = "error"; 
  $response_array["msg"] = "Une erreur est survenue lors de l'ajout de l'époque : pas d'époque";
  echo json_encode($response_array);
  exit;
 }
-$img_id=$content->img_id;
-$period=$content->period;
+$img_id=$_POST["img_id"];
+$period=$_POST["period"];
 
 $sql=$dbo->prepare("insert into periods values('$img_id','$period')");
 if($sql->execute()){
